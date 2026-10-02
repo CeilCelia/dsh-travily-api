@@ -190,7 +190,7 @@ try {
       const text = await bundle.text()
       step(
         'client bundle loads',
-        bundle.status === 200 && text.includes('plugins.item'),
+        bundle.status === 200 && text.includes('plugins.bundle.config'),
         `status ${String(bundle.status)}`,
       )
     }

@@ -63,7 +63,7 @@
     "react-dom": "18.3.1"
   },
   "scripts": {
-    "test": "node .tools/selftest.mjs && node .tools/integration.mjs && node .tools/client-harness.mjs",
+    "test": "node .tools/selftest.mjs && node .tools/integration.mjs && node .tools/client-harness.mjs && node .tools/card-state.mjs",
     "test:e2e": "node .tools/verify-install.mjs",
     "test:live": "node .tools/live-search.mjs"
   }

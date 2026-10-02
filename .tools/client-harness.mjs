@@ -151,15 +151,22 @@ const fiber = root.plugin({ name: 'client-half', inject: client.inject, apply: c
 await fiber
 assert.equal(fiber.state, 2, 'the client plugin mounted (2 = active)')
 
-// ── 3. the card must have reached the Plugins page's item slot ──────────────
+// ── 3. the card must have reached the installed package's page ──────────────
 assert.ok(dictionaries.has('settings.web-search-tavily'), 'the card registers its dictionaries')
-const pluginItem = calls.find((call) => call.kind === 'register' && call.options.name === 'plugins.item')
-assert.ok(pluginItem, 'a plugins.item registration reached the slot registry')
+const pluginItem = calls.find(
+  (call) => call.kind === 'register' && call.options.name === 'plugins.bundle.config',
+)
+assert.ok(pluginItem, 'a plugins.bundle.config registration reached the slot registry')
 
 const { options, component } = pluginItem
-assert.equal(options.id, 'tavily', 'list slots require an id')
-assert.equal(options.key, 'web-search-tavily', 'the configuration-ledger key is the host entry id')
-assert.equal(typeof options.label, 'function', 'list slots require a label')
+// The card belongs on the installed package's own page, not in the Official
+// group, so its slot key is the package name.
+assert.equal(options.key, 'dsh-travily-api', 'the card files itself under its package name')
+assert.ok(
+  !calls.some((call) => call.options?.name === 'plugins.item'),
+  'the card contributes nothing to the Official group',
+)
+assert.equal(typeof options.label, 'function', 'keyed slots carry a label')
 assert.equal(options.locale, 'settings.web-search-tavily', 'the card declares its dictionary namespace')
 assert.equal(typeof options.inject, 'function', 'the card supplies its business props')
 
