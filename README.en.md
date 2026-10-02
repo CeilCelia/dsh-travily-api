@@ -12,7 +12,7 @@ In DeepSeek Harness, open the "Plugins" panel on the left, press "Add plugin", a
 github:CeilCelia/dsh-travily-api
 ```
 
-Restart DeepSeek Harness once. Then go back to "Plugins", open the "Official" group and expand "Tavily web search":
+Restart DeepSeek Harness once. Then go back to "Plugins" and open "Tavily web search" in the "Installed" group — its settings are right there:
 
 1. Get an API key from [tavily.com](https://tavily.com), paste it in and save (leave it empty to use Tavily's keyless mode).
 2. Turn on "Use Tavily for web search" and save.

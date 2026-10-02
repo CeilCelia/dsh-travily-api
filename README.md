@@ -12,7 +12,7 @@
 github:CeilCelia/dsh-travily-api
 ```
 
-装完重启一次 DeepSeek Harness。然后回到「插件」，点「官方」，展开「Tavily 网页搜索」：
+装完重启一次 DeepSeek Harness。然后回到「插件」，在「已安装」里点开「Tavily 网页搜索」，下面就是它的设置：
 
 1. 在 [tavily.com](https://tavily.com) 申请 API Key，填入并保存（留空则用 Tavily 无 Key 模式）。
 2. 打开「使用 Tavily 进行网页搜索」并保存。
