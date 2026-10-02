@@ -6,26 +6,34 @@
 
 ## 安装
 
-```sh
-dsh plugin --profile desktop add github:CeilCelia/dsh-travily-api
+在 DeepSeek Harness 里点左侧的「插件」，点「添加插件」，在「包名或地址」里填入：
+
+```
+github:CeilCelia/dsh-travily-api
 ```
 
-装完重启一次 DeepSeek Harness。然后打开设置 → 插件，展开「Tavily 网页搜索」：
+装完重启一次 DeepSeek Harness。然后回到「插件」，点「官方」，展开「Tavily 网页搜索」：
 
 1. 在 [tavily.com](https://tavily.com) 申请 API Key，填入并保存（留空则用 Tavily 无 Key 模式）。
 2. 打开「使用 Tavily 进行网页搜索」并保存。
 3. 点「连通测试」确认——它会真的发一次搜索。
 
-卸载：
+用命令行装也可以，效果一样：
 
 ```sh
-dsh plugin --profile desktop remove dsh-travily-api
+dsh plugin --profile desktop add github:CeilCelia/dsh-travily-api
 ```
 
-也可以装本地目录（开发时更方便，改代码不用重装）：
+开发时更推荐装本地目录，改代码不用重装：
 
 ```sh
 dsh plugin --profile desktop add "C:\path\to\dsh-travily-api"
+```
+
+卸载在「插件」面板里点卸载，或：
+
+```sh
+dsh plugin --profile desktop remove dsh-travily-api
 ```
 
 ## 行为

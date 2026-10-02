@@ -6,26 +6,34 @@ Tavily web search for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek
 
 ## Install
 
-```sh
-dsh plugin --profile desktop add github:CeilCelia/dsh-travily-api
+In DeepSeek Harness, open the "Plugins" panel on the left, press "Add plugin", and enter this under "Package name or address":
+
+```
+github:CeilCelia/dsh-travily-api
 ```
 
-Restart DeepSeek Harness once. Then open Settings → Plugins and expand "Tavily web search":
+Restart DeepSeek Harness once. Then go back to "Plugins", open the "Official" group and expand "Tavily web search":
 
 1. Get an API key from [tavily.com](https://tavily.com), paste it in and save (leave it empty to use Tavily's keyless mode).
 2. Turn on "Use Tavily for web search" and save.
 3. Press "Test connection" — it runs one real search.
 
-Uninstall:
+The command line works the same way:
 
 ```sh
-dsh plugin --profile desktop remove dsh-travily-api
+dsh plugin --profile desktop add github:CeilCelia/dsh-travily-api
 ```
 
-A local checkout works too (handy while developing, since edits need no reinstall):
+While developing, a local checkout is handier — edits need no reinstall:
 
 ```sh
 dsh plugin --profile desktop add "C:\path\to\dsh-travily-api"
+```
+
+Uninstall from the "Plugins" panel, or:
+
+```sh
+dsh plugin --profile desktop remove dsh-travily-api
 ```
 
 ## Behaviour
