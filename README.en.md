@@ -2,63 +2,63 @@
 
 [中文](README.md) | English
 
-Tavily web search for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (dsh). Paste an API key, flip a switch, and `web_search` runs through Tavily.
+Tavily search for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (dsh). When enabled, `web_search` runs through Tavily; when disabled, it falls back to the platform's own search.
 
 ## Install
 
-In DeepSeek Harness, open the "Plugins" panel on the left, press "Add plugin", and enter this under "Package name or address":
+In DeepSeek Harness, press "Add plugin" in the "Plugins" panel and enter this under "Package name or address":
 
 ```
 github:CeilCelia/dsh-travily-api
 ```
 
-Restart DeepSeek Harness once. Then go back to "Plugins" and open "Tavily web search" in the "Installed" group — its settings are right there:
-
-1. Get an API key from [tavily.com](https://tavily.com), paste it in and save (leave it empty to use Tavily's keyless mode).
-2. Turn on "Use Tavily for web search" and save.
-3. Press "Test connection" — it runs one real search.
-
-The command line works the same way:
+Restart DeepSeek Harness afterwards: the plugin loads as a profile bundle, so it takes effect on the next start. The command line works the same way:
 
 ```sh
 dsh plugin --profile desktop add github:CeilCelia/dsh-travily-api
 ```
 
-While developing, a local checkout is handier — edits need no reinstall:
+For development, a local directory can be installed instead, and code edits need no reinstall:
 
 ```sh
 dsh plugin --profile desktop add "C:\path\to\dsh-travily-api"
 ```
 
-Uninstall from the "Plugins" panel, or:
+Uninstall:
 
 ```sh
 dsh plugin --profile desktop remove dsh-travily-api
 ```
 
-## Behaviour
+## Configuration
 
-| Switch | API key | `web_search` uses |
+After the restart, open "Tavily web search" under "Installed" in the "Plugins" panel. Its settings are on that page:
+
+1. Request an API key from [tavily.com](https://tavily.com) and enter it. Leaving it empty uses Tavily's keyless mode.
+2. Enable "Use Tavily for web search".
+3. Press save. "Test connection" verifies the setup by running one real search.
+
+| Switch | API key | `web_search` provider |
 | --- | --- | --- |
 | Off (default) | — | the platform's own search |
-| On | not set | Tavily keyless mode |
-| On | set | Tavily, billed to your account |
+| On | empty | Tavily, keyless mode |
+| On | set | Tavily, billed to the account |
 
-Installing changes nothing on its own: while the switch is off the request goes to whichever search provider the deployment already has. Switch and key changes apply immediately — no restart.
+While disabled, the request is passed through to the search provider already registered on the platform, so installing the plugin does not change existing behaviour. Switch and API key changes apply as soon as they are saved; no restart is required.
 
-## Where the API key lives
+## API key storage
 
-It is stored as a credential, never written into the settings file and never recorded in a session. To set it by hand, put it in `$DSH_HOME/.credentials.yaml`:
+The API key is stored as a credential. It is not written into the settings file and does not appear in session records. To configure it by hand, add it to `$DSH_HOME/.credentials.yaml`:
 
 ```yaml
 TAVILY_API_KEY: tvly-xxxxxxxx
 ```
 
-or inject it as a launch environment variable, which outranks the file.
+It can also be injected through a launch environment variable, which takes precedence over the credential file.
 
 ## Settings
 
-The Settings page writes the `web-search-tavily` row of your profile patch. You can also write it by hand:
+The settings page writes the `web-search-tavily` row of the profile patch. That row can also be edited directly:
 
 ```yaml
 - id: web-search-tavily
@@ -69,13 +69,13 @@ The Settings page writes the `web-search-tavily` row of your profile patch. You 
 
 | Field | Default | Meaning |
 | --- | --- | --- |
-| `enabled` | `false` | The switch; off falls back to the platform search |
-| `apiKeyEnv` | `TAVILY_API_KEY` | Credential reference the key is read from |
+| `enabled` | `false` | Whether searches run through Tavily; off falls back to the platform search |
+| `apiKeyEnv` | `TAVILY_API_KEY` | Credential reference the API key is read from |
 | `baseURL` | `https://api.tavily.com` | Tavily endpoint |
-| `allowCustomBaseURL` | `false` | Allow an endpoint other than the public one |
-| `maxResults` | `5` | Results per search when the request states no budget |
+| `allowCustomBaseURL` | `false` | Whether a non-official endpoint is permitted |
+| `maxResults` | `5` | Results returned when the request specifies no budget |
 | `searchDepth` | `basic` | `basic` or `advanced` |
-| `searchTimeoutMs` | `30000` | Timeout for one Tavily request |
+| `searchTimeoutMs` | `30000` | Timeout for one request, in milliseconds |
 
 ## License
 
