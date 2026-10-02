@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Tavily web search for DeepSeek Harness: a settings switch between Tavily and the platform search provider, the API key held as a credential, and a connection test.",
+  "description": "Tavily web search for DeepSeek Harness: a settings switch back to the platform search provider, the API key held as a credential, and a connection test.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -35,7 +35,9 @@
     "lib/index.js",
     "lib/client.js",
     "cordis.patch.yml",
-    "README.md"
+    "README.md",
+    "README.en.md",
+    "LICENSE"
   ],
   "dsh": {
     "bundle": {
