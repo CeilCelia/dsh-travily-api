@@ -5,7 +5,7 @@
 Tavily search for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (dsh). When enabled, `web_search` runs through Tavily; when disabled, it falls back to the platform's own search.
 
 Last updated: 2026-10-02
-Current version: v0.1.0
+Built against dsh: 0.2.0-rc.2
 
 ## Install
 

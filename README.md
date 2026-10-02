@@ -5,7 +5,7 @@
 为 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（dsh）提供 Tavily 搜索能力。启用后 `web_search` 通过 Tavily 执行，禁用后回退到平台自带的搜索。
 
 最新更新时间：2026-10-02
-最新更新版本：v0.1.0
+更新时对应的 dsh 版本：0.2.0-rc.2
 
 ## 安装
 
