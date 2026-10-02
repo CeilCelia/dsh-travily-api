@@ -81,17 +81,6 @@ cordis.patch.yml    profile patch：插入 web-search-tavily 行
 package.json        插件清单
 ```
 
-## 参与开发
-
-```sh
-npm install
-npm test                         # 离线测试：设置节/提供方/设置卡片渲染
-node .tools/verify-install.mjs   # 端到端：临时 profile + 备用端口真启动一次
-node .tools/live-search.mjs      # 用已保存的开关与 Key 真搜一次（消耗额度）
-```
-
-`.tools/verify-install.mjs` 会在 `$DSH_HOME/profiles/travily-verify` 建一个临时 profile，验证完删除，并只关掉它自己启动的进程——不会碰你正在用的 profile。`.tools/live-search.mjs` 会真的调用 Tavily API。
-
 ## License
 
 MIT

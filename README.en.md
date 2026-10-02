@@ -81,17 +81,6 @@ cordis.patch.yml    profile patch: inserts the web-search-tavily row
 package.json        plugin manifest
 ```
 
-## Development
-
-```sh
-npm install
-npm test                         # offline: settings section, provider, card rendering
-node .tools/verify-install.mjs   # end to end: throwaway profile booted on a spare port
-node .tools/live-search.mjs      # one real search with your saved switch and key (spends quota)
-```
-
-`.tools/verify-install.mjs` builds a throwaway profile under `$DSH_HOME/profiles/travily-verify`, deletes it afterwards, and stops only the process it started itself — it never touches the profile you are using. `.tools/live-search.mjs` does call the real Tavily API.
-
 ## License
 
 MIT
