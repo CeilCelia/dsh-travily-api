@@ -1,0 +1,19 @@
+# The dsh-travily-api bundle patch.
+#
+# Applied after the base and web-app layers, so it adds one host row and mounts
+# the plugin's browser card. The plugin registers a `tavily` search provider on
+# the `ctx.web` seam and keeps the platform provider for when its switch is off.
+
+- insert:
+    - id: web-search-tavily
+      name: dsh-travily-api
+      config:
+        # Off by default: installing the plugin changes nothing until the
+        # Settings switch is turned on.
+        enabled: false
+        apiKeyEnv: TAVILY_API_KEY
+        baseURL: https://api.tavily.com
+        allowCustomBaseURL: false
+        maxResults: 5
+        searchDepth: basic
+        searchTimeoutMs: 30000
