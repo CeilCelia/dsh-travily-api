@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Tavily web search",
+    "description": "Route web_search through Tavily with a switch back to the platform search provider."
+  }
+}

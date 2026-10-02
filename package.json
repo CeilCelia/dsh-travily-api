@@ -28,12 +28,15 @@
     "./client": {
       "default": "./lib/client.js"
     },
+    "./locale/*": "./locale/*",
     "./cordis.patch.yml": "./cordis.patch.yml",
     "./package.json": "./package.json"
   },
   "files": [
     "lib/index.js",
     "lib/client.js",
+    "locale/en.json",
+    "locale/zh.json",
     "cordis.patch.yml",
     "README.md",
     "README.en.md",

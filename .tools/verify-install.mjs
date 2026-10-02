@@ -32,7 +32,9 @@ const flags = options(process.argv.slice(2))
 const port = Number(flags.port ?? '19388')
 const fromGithub = flags.github === true
 const repo = typeof flags.repo === 'string' ? flags.repo : 'github:CeilCelia/dsh-travily-api'
-const { exe, cli } = resolveInstall(typeof flags.dir === 'string' ? flags.dir : undefined)
+const { root: installRoot, exe, cli } = resolveInstall(
+  typeof flags.dir === 'string' ? flags.dir : undefined,
+)
 const home = dshHome()
 const profile = 'travily-verify'
 const directory = profileDir(home, profile)
@@ -107,6 +109,21 @@ step(
   'row composes',
   `${dump.stdout ?? ''}${dump.stderr ?? ''}`.includes('web-search-tavily'),
   `web-search-tavily row missing from --dump-config:\n${(dump.stderr ?? '').slice(-800)}`,
+)
+
+// The Plugins panel shows a package's localized title and description when the
+// installed copy exposes `locale/*` through its `exports` map; without that the
+// card falls back to the raw package name. The reader needs Node's internal
+// resolver, so it runs under the application binary rather than the CLI.
+const meta = spawnSync(
+  exe,
+  ['--expose-internals', join(here, 'meta-check.mjs'), installRoot, directory],
+  { encoding: 'utf8', env: dshEnv },
+)
+step(
+  'package card metadata',
+  (meta.stdout ?? '').includes('Tavily 网页搜索'),
+  `${(meta.stdout ?? '').slice(-300)}${(meta.stderr ?? '').slice(-300)}`,
 )
 
 const child = spawn(exe, ['--expose-internals', cli, '--profile', profile, '--no-open', '--port', String(port)], {

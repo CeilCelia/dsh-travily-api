@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Tavily 网页搜索",
+    "description": "让 web_search 走 Tavily，关掉开关即回退平台搜索。"
+  }
+}
