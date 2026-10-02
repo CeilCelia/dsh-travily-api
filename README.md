@@ -82,4 +82,4 @@ TAVILY_API_KEY: tvly-xxxxxxxx
 
 ## License
 
-MIT
+MIT。本项目部分代码派生自 MIT 许可的 [SZMY-haruhi/dsh-tavily](https://github.com/SZMY-haruhi/dsh-tavily)，其版权声明与许可全文见 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。

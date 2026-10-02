@@ -82,4 +82,7 @@ The settings page writes the `web-search-tavily` row of the profile patch. That 
 
 ## License
 
-MIT
+MIT. Parts of this project derive from the MIT-licensed
+[SZMY-haruhi/dsh-tavily](https://github.com/SZMY-haruhi/dsh-tavily); its
+copyright notice and license text are reproduced in
+[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
